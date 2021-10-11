@@ -8,17 +8,28 @@ public class QiAnXin {
     public static void main(String[] args) {
         char[] seed = new char[]{'0', '1', '2'};
         int size = 2;
-        Permutation(seed, size);
+        String[] ans = Permutation(seed, size);
+        for(int i = 0; i < ans.length; ++i) {
+            System.out.println(ans[i]);
+        }
     }
 
-    public static void backtrack(int n, char[] seed, List<Character> output, List<String> ans, int first) {
-        if(first == n) {
+    public static void backtrack(int n, char[] seed, List<Character> output, List<String> ans) {
+        if(output.size() == n) {
             ans.add(output.toString());
             return;
         }
-        for(int i = first; i < seed.length; ++i) {
+        for(int i = 1; i < seed.length; ++i) {
             output.add(seed[i]);
-            backtrack(n, seed, output, ans, first + 1);
+            char[] seed2 = new char[seed.length - 1];
+            for(int j = 0; j < seed.length - 1; ++j) {
+                if(j < i) {
+                    seed2[j] = seed[j];
+                } else if(j > i) {
+                    seed2[j] = seed[j + 1];
+                }
+            }
+            backtrack(n, seed2, output, ans);
             output.remove(output.size() - 1);
         }
     }
@@ -27,8 +38,8 @@ public class QiAnXin {
         Arrays.sort(seed);
         List<String> ans = new ArrayList<>();
         List<Character> output = new ArrayList<>();
-        backtrack(size, seed, output, ans, 0);
-        return ans.toArray(ans.toArray(new String[0]));
+        backtrack(size, seed, output, ans);
+        return ans.toArray(new String[0]);
     }
 
 

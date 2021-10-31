@@ -1,7 +1,7 @@
 package leetcode;
 
-import java.util.Deque;
-import java.util.LinkedList;
+import java.util.*;
+import java.util.concurrent.BlockingDeque;
 
 //两个栈实现一个队列
 public class StackToQueue {

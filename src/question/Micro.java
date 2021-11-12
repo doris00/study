@@ -6,6 +6,9 @@ import java.util.Scanner;
 /**
  * 寻找两只吵架的青蛙直接的最大距离
  * 给一个数组表示跳台，青蛙可以跳到比当前跳台高或者相等的块
+ * 应该不是最优的解法，从前往后找到各自位置的增长长度
+ * 从后往前找各自位置的增长长度
+ * 最后相加求最大值-1
  */
 public class Micro {
     public static void main(String[] args) {

@@ -12,11 +12,11 @@ public class ZiJieTiaoDong {
         Scanner sc = new Scanner(System.in);
         String s = sc.nextLine();
         Map<Character, Integer> temp = new HashMap<>();
-        int pre = 0;
-        int ans = 1;
+        int pre = -1;
+        int ans = 0;
         for (int i = 0; i < s.length(); ++i) {
             if (temp.containsKey(s.charAt(i))) {
-                pre = temp.get(s.charAt(i));
+                pre = Math.max(pre, temp.get(s.charAt(i)));
             }
             temp.put(s.charAt(i), i);
             if((i - pre) > ans) {
